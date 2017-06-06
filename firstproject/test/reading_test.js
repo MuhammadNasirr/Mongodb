@@ -1,16 +1,16 @@
 const assert = require('assert');
 const User = require('../src/user');
 
-describe('Reading users out of the database', () => {
+describe('Reading users out of the database', (done) => {
     let zahid;
-    beforeEach(() => {
+    beforeEach((done) => {
         zahid = new User({ name: 'Zahid' });
         zahid.save()
             .then(() => done());
     });
 
     it('find all users with the name of nasir', (done) => {
-        User.findOne({ name: 'Zahid' })
+        User.find({ name: 'Zahid' })
             .then((user) => {
                 console.log(user);
                 done();
